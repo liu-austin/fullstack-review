@@ -1,3 +1,4 @@
+// jshint esversion:6
 import React from 'react';
 
 class Search extends React.Component {
@@ -5,7 +6,9 @@ class Search extends React.Component {
     super(props);
     this.state = {
       term: ''
-    }
+    };
+    this.onChange = this.onChange.bind(this);
+    this.search = this.search.bind(this);
   }
 
   onChange (e) {
@@ -16,14 +19,15 @@ class Search extends React.Component {
 
   search() {
     this.props.onSearch(this.state.term);
+
   }
 
   render() {
     return (<div>
       <h4>Add more repos!</h4>
-      Enter a github username: <input value={this.state.terms} onChange={this.onChange}/>       
+      Enter a github username: <input value={this.state.terms} onChange={this.onChange}/>
       <button onClick={this.search}> Add Repos </button>
-    </div>) 
+    </div>)
   }
 }
 
